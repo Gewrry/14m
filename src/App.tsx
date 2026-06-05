@@ -18,7 +18,7 @@ const uploadedPhotoUrls = Object.entries(photoModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src);
 
-const photoAt = (index: number) => uploadedPhotoUrls[index % uploadedPhotoUrls.length] ?? "/yuji.png";
+const photoAt = (index: number) => uploadedPhotoUrls[index % uploadedPhotoUrls.length] ?? "./yuji.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
