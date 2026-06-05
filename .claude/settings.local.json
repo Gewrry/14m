@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude plugin *)",
+      "Bash(claude skill *)",
+      "Bash(claude *)"
+    ]
+  }
+}
