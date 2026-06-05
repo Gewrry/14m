@@ -176,7 +176,7 @@ export default function App() {
         <StoryPanel className="story-panel-final" delay={0.08}>
 
           <h2>Happy Monthsary</h2>
-          <p>Thank you for every moment with you.</p>
+          <p>Thank you for every moment with you. I love you gwapa !!!</p>
         </StoryPanel>
       </section>
     </main>
