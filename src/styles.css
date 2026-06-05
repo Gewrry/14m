@@ -39,11 +39,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background:
-    radial-gradient(circle at 18% 10%, rgba(255, 143, 186, 0.18), transparent 30rem),
-    radial-gradient(circle at 82% 18%, rgba(216, 170, 104, 0.14), transparent 28rem),
-    radial-gradient(circle at 74% 78%, rgba(217, 196, 255, 0.1), transparent 26rem),
-    linear-gradient(180deg, #0b0610 0%, #1a0a1c 44%, #09050c 100%);
+  background: #08040b;
   color: var(--ivory);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -177,34 +173,7 @@ a:focus-visible {
   min-height: 560vh;
   isolation: isolate;
   overflow-x: clip;
-  background:
-    radial-gradient(circle at 16% 10%, rgba(255, 143, 186, 0.12), transparent 28rem),
-    radial-gradient(circle at 84% 18%, rgba(216, 170, 104, 0.1), transparent 30rem),
-    #08040b;
-}
-
-.cinematic-journey::before,
-.cinematic-journey::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.cinematic-journey::before {
-  background:
-    radial-gradient(circle at 50% 46%, transparent 0 17rem, rgba(8, 4, 11, 0.24) 42rem),
-    linear-gradient(90deg, rgba(8, 4, 11, 0.64), transparent 25%, transparent 75%, rgba(8, 4, 11, 0.64));
-}
-
-.cinematic-journey::after {
-  opacity: 0.16;
-  background-image:
-    linear-gradient(rgba(255, 247, 237, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 247, 237, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+  background: transparent;
 }
 
 .cinematic-fallback {
@@ -280,21 +249,79 @@ a:focus-visible {
 .story-panel-letter {
   width: min(720px, 100%);
   padding: clamp(1.4rem, 4vw, 2.4rem);
-  border: 1px solid rgba(255, 247, 237, 0.14);
+  border: 1px solid rgba(255, 247, 237, 0.08);
   border-radius: 8px;
-  background:
-    linear-gradient(145deg, rgba(255, 247, 237, 0.12), rgba(255, 247, 237, 0.045)),
-    rgba(24, 10, 27, 0.38);
-  box-shadow:
-    0 34px 110px rgba(5, 2, 7, 0.34),
-    inset 0 1px 0 rgba(255, 247, 237, 0.16);
-  backdrop-filter: blur(20px);
+  background: rgba(8, 4, 11, 0.26);
+  box-shadow: none;
+  backdrop-filter: blur(10px);
 }
 
 .story-panel-final {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.chapter-photo {
+  position: relative;
+  width: min(460px, 100%);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 247, 237, 0.16);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 247, 237, 0.13), rgba(255, 247, 237, 0.045)),
+    rgba(24, 10, 27, 0.58);
+  box-shadow:
+    0 34px 120px rgba(5, 2, 7, 0.58),
+    0 0 70px rgba(255, 143, 186, 0.09),
+    inset 0 1px 0 rgba(255, 247, 237, 0.2);
+  pointer-events: auto;
+  backdrop-filter: blur(18px);
+}
+
+.chapter-photo::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 1;
+  border-radius: 7px;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 247, 237, 0.28), transparent 34%, rgba(216, 170, 104, 0.16));
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.chapter-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 247, 237, 0.08), transparent 26%, rgba(11, 6, 16, 0.18)),
+    radial-gradient(circle at 26% 8%, rgba(255, 179, 205, 0.18), transparent 18rem);
+}
+
+.chapter-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.04);
+}
+
+.chapter-photo-right {
+  margin-right: clamp(0rem, 3vw, 3rem);
+}
+
+.chapter-photo-wide {
+  width: min(660px, 100%);
+}
+
+.chapter-photo-wide img {
+  aspect-ratio: 16 / 11;
 }
 
 .story-panel h1,
@@ -307,9 +334,7 @@ a:focus-visible {
   letter-spacing: 0;
   line-height: 0.92;
   text-wrap: balance;
-  text-shadow:
-    0 0 34px rgba(255, 179, 205, 0.28),
-    0 0 100px rgba(216, 170, 104, 0.12);
+  text-shadow: 0 2px 32px rgba(0, 0, 0, 0.42);
 }
 
 .story-panel h1 {
@@ -326,37 +351,6 @@ a:focus-visible {
   color: var(--ivory-soft);
   font-size: clamp(1rem, 1.32vw, 1.18rem);
   line-height: 1.72;
-}
-
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-.cursor-glow span {
-  position: absolute;
-  border-radius: 999px;
-  transform: translate(-50%, -50%);
-}
-
-.cursor-glow span:first-child {
-  width: 0.45rem;
-  height: 0.45rem;
-  background: rgba(255, 179, 205, 0.58);
-  box-shadow: 0 0 26px rgba(255, 143, 186, 0.44);
-}
-
-.cursor-glow span:last-child {
-  width: 5rem;
-  height: 5rem;
-  background: rgba(216, 170, 104, 0.06);
-  box-shadow: 0 0 74px rgba(216, 170, 104, 0.18);
 }
 
 .scene {
@@ -427,7 +421,6 @@ a:focus-visible {
 
 .eyebrow svg {
   color: var(--champagne);
-  filter: drop-shadow(0 0 14px rgba(216, 170, 104, 0.46));
 }
 
 .magnetic-button {
@@ -864,6 +857,19 @@ a:focus-visible {
   .love-letter,
   .glass-note {
     padding: 1.2rem;
+  }
+
+  .chapter-photo,
+  .chapter-photo-wide {
+    width: min(100%, 25rem);
+  }
+
+  .chapter-photo-right {
+    margin-right: 0;
+  }
+
+  .chapter-photo-wide img {
+    aspect-ratio: 4 / 5;
   }
 
   .photo-card,
