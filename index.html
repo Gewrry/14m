@@ -19,5 +19,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (() => {
+        const isGitHubPages = location.hostname.endsWith("github.io");
+        const isLocalStaticServer = ["localhost", "127.0.0.1"].includes(location.hostname) && location.port !== "5173";
+        const isRawViteIndex = document.querySelector('script[src="/src/main.tsx"]');
+        const isAlreadyDocs = location.pathname.endsWith("/docs/") || location.pathname.includes("/docs/");
+
+        if ((isGitHubPages || isLocalStaticServer) && isRawViteIndex && !isAlreadyDocs) {
+          const basePath = location.pathname.endsWith("/")
+            ? location.pathname
+            : location.pathname.replace(/\/[^/]*$/, "/");
+          location.replace(`${basePath}docs/`);
+        }
+      })();
+    </script>
   </body>
 </html>

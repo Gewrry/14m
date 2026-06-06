@@ -15,10 +15,25 @@
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/index-CzKLTXz7.js"></script>
+    <script type="module" crossorigin src="./assets/index-Dc4N6S6K.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BlQKeCl-.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (() => {
+        const isGitHubPages = location.hostname.endsWith("github.io");
+        const isLocalStaticServer = ["localhost", "127.0.0.1"].includes(location.hostname) && location.port !== "5173";
+        const isRawViteIndex = document.querySelector('script[src="/src/main.tsx"]');
+        const isAlreadyDocs = location.pathname.endsWith("/docs/") || location.pathname.includes("/docs/");
+
+        if ((isGitHubPages || isLocalStaticServer) && isRawViteIndex && !isAlreadyDocs) {
+          const basePath = location.pathname.endsWith("/")
+            ? location.pathname
+            : location.pathname.replace(/\/[^/]*$/, "/");
+          location.replace(`${basePath}docs/`);
+        }
+      })();
+    </script>
   </body>
 </html>
